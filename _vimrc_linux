@@ -1,0 +1,107 @@
+source $VIMRUNTIME/vimrc_example.vim	"基础功能
+source $VIMRUNTIME/delmenu.vim			"去掉GVIM的菜单
+
+set nu									"显示行号
+set nobackup							"不备份，减少生成文件
+set tabstop = 4							" tab = 4 * space
+set shiftwidth = 4
+set incsearch							"增量搜索
+set autoread
+set cursorline
+"设置界面
+set cmdheight = 2
+set laststatus = 2
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r
+set guioptions-=L
+set lines=38 columns=120
+"设置编码
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=ucs0bom,utf-8,gbk,cp936,latin-1
+"其他设置
+set shellslash
+set grepprg = grep\ -nH\ $*
+syntax on
+filetype on
+filetype plugin on
+colorscheme solarized
+autocmd! bufwritepost $VIM/_vimrc source %
+
+"latex-vim
+"let g:tex_flavor='latex'
+
+"设置环境变量
+"let $acm = ""
+"let $latex=""
+"let $doc = ""
+
+"按键映射
+map <C-A> <ESC>ggVG"+y
+map <F9> <ESC>:call Run()<CR>
+map <F7> <ESC>:call SetTitle1()<CR>
+map <F8> <ESC>:call SetTitle2()<CR>
+"map <F2> <ESC>:call ComlieLatexAndView()<CR>
+"map <C-F2> <ESC>:w<CR>\ll
+"map <F3> <ESC>\lv
+
+function! Run()
+	exec "w"
+	let exepath = ""
+	if &filetype == 'c' || &filetype == 'cpp'
+		let exepath = "!g++ -Wall -std=c++0x % -o %<.bin && .\%<.bin	&& rm -f %<.bin"
+		execute exepath
+	elseif &filetype == 'python'
+		let exepath = "!python %"
+		execute exepath
+
+endfunction
+
+function! ClearTemp()
+	exec "rm -f *.o *.exe *.*~ *.out *.aux *.nav *.snm *.toc "
+endfunction
+
+function! SetTitle1()
+	let l=0
+	let l=l+1 | call setline(l,"#include<iostream>")
+	let l=l+1 | call setline(l,'#include<cstdio>')
+	let l=l+1 | call setline(l,'#include<cstring>')
+	let l=l+1 | call setline(l,'#include<algorithm>')
+	let l=l+1 | call setline(l,'#include<string>')
+	let l=l+1 | call setline(l,'#include<cmath>')
+	let l=l+1 | call setline(l,'#include<cstdlib>')
+	let l=l+1 | call setline(l,'#include<vector>')
+	let l=l+1 | call setline(l,'#include<set>')
+	let l=l+1 | call setline(l,'#include<map>')
+	let l=l+1 | call setline(l,'#include<queue>')
+	let l=l+1 | call setline(l,'using namespace std;')
+	let l=l+1 | call setline(l,'typedef long long ll;')
+	let l=l+1 | call setline(l,'')
+	let l=l+1 | call setline(l,'int main()')
+	let l=l+1 | call setline(l,'{')
+	let l=l+1 | call setline(l,'#ifndef ONLINE_JUDGE')
+	let l=l+1 | call setline(l,"    //freopen(\"".expand("%:t:r").".in\",\"r\",stdin);")
+	let l=l+1 | call setline(l,"    //freopen(\"".expand("%:t:r").".out\",\"w\",stdout);")
+	let l=l+1 | call setline(l,'#endif')
+	let l=l+1 | call setline(l,'')
+	let l=l+1 | call setline(l,'	return 0;')
+	let l=l+1 | call setline(l,'}')
+endfunction
+
+func! SetTitle2()
+	let l=0
+	let l=l+1 | call setline(l,'#include<bits/stdc++.h>')
+	let l=l+1 | call setline(l,'using namespace std;')
+	let l=l+1 | call setline(l,'typedef long long ll;')
+	let l=l+1 | call setline(l,'')
+	let l=l+1 | call setline(l,'int main()')
+	let l=l+1 | call setline(l,'{')
+	let l=l+1 | call setline(l,'#ifndef ONLINE_JUDGE')
+	let l=l+1 | call setline(l,"    //freopen(\"".expand("%:t:r").".in\",\"r\",stdin);")
+	let l=l+1 | call setline(l,"    //freopen(\"".expand("%:t:r").".out\",\"w\",stdout);")
+	let l=l+1 | call setline(l,'#endif')
+	let l=l+1 | call setline(l,'')
+	let l=l+1 | call setline(l,'	return 0;')
+	let l=l+1 | call setline(l,'}')
+endfunc

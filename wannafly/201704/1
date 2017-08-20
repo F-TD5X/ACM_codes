@@ -1,0 +1,81 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+int main()
+{
+    int n,m; scanf("%d%d",&n,&m);
+    for (int i=1;i<=m;++i)
+    {
+        int k;
+        scanf("%d",&k);
+        s1.clear();
+        int flag = 0;
+        for (int j=1;j<=k;++j)
+        {
+            int a;
+            scanf("%d",&a);
+            if (s1.count(-a)) flag=1;
+            s1.insert(a);
+        }
+        if (!flag)
+        {
+            puts("YES");
+            return 0;
+        }
+    }
+    puts("NO");
+    return 0;
+}
+=======
+int main()
+{
+    int n,m; scanf("%d%d",&n,&m);
+    for (int i=1;i<=m;++i)
+    {
+        int k;
+        scanf("%d",&k);
+        s1.clear();
+        int flag = 0;
+        for (int j=1;j<=k;++j)
+        {
+            int a;
+            scanf("%d",&a);
+            if (s1.count(-a)) flag=1;
+            s1.insert(a);
+        }
+        if (!flag)
+        {
+            puts("YES");
+            return 0;
+        }
+    }
+    puts("NO");
+    return 0;
+}
+>>>>>>> e30efc2bee7b85c64b5cc40b21a84d4cb2f8cc56
+=======
+int main()
+{
+    int n,m; scanf("%d%d",&n,&m);
+    for (int i=1;i<=m;++i)
+    {
+        int k;
+        scanf("%d",&k);
+        s1.clear();
+        int flag = 0;
+        for (int j=1;j<=k;++j)
+        {
+            int a;
+            scanf("%d",&a);
+            if (s1.count(-a)) flag=1;
+            s1.insert(a);
+        }
+        if (!flag)
+        {
+            puts("YES");
+            return 0;
+        }
+    }
+    puts("NO");
+    return 0;
+}
+>>>>>>> f02e15c16e5c2d0b5fec3c050b7fc6ea46695739

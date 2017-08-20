@@ -1,0 +1,55 @@
+<<<<<<< HEAD
+int main() {
+	ios_base::sync_with_stdio(false);
+	string s; 
+	cin >> s;
+	int len = s.size();
+	precalcFactorials();
+	vector<int> opnLeft(len), clsRight(len);
+	opnLeft[0] = (s[0] == '(') ? 1 : 0;
+	for (int i = 1; i < len; i++) {
+		opnLeft[i] = opnLeft[i-1] + ((s[i] == '(') ? 1 : 0);
+	}
+	clsRight[len-1] = (s[len-1] == ')') ? 1 : 0;
+	for (int i = len-2; i >= 0; i--) {
+		clsRight[i] = clsRight[i+1] + ((s[i] == ')') ? 1 : 0);
+	}
+	int res = 0;
+	for (int i = 0; i < len; i++) {
+		if (s[i] != '(' || clsRight[i] == 0) {
+			continue;
+		}
+		int add = C(opnLeft[i], opnLeft[i] + clsRight[i] - 1);
+		res = addMod(res, add);
+	}
+	cout << res << endl;
+	return 0;
+}
+=======
+int main() {
+	ios_base::sync_with_stdio(false);
+	string s; 
+	cin >> s;
+	int len = s.size();
+	precalcFactorials();
+	vector<int> opnLeft(len), clsRight(len);
+	opnLeft[0] = (s[0] == '(') ? 1 : 0;
+	for (int i = 1; i < len; i++) {
+		opnLeft[i] = opnLeft[i-1] + ((s[i] == '(') ? 1 : 0);
+	}
+	clsRight[len-1] = (s[len-1] == ')') ? 1 : 0;
+	for (int i = len-2; i >= 0; i--) {
+		clsRight[i] = clsRight[i+1] + ((s[i] == ')') ? 1 : 0);
+	}
+	int res = 0;
+	for (int i = 0; i < len; i++) {
+		if (s[i] != '(' || clsRight[i] == 0) {
+			continue;
+		}
+		int add = C(opnLeft[i], opnLeft[i] + clsRight[i] - 1);
+		res = addMod(res, add);
+	}
+	cout << res << endl;
+	return 0;
+}
+>>>>>>> f02e15c16e5c2d0b5fec3c050b7fc6ea46695739

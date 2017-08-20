@@ -1,0 +1,19 @@
+1000 OK
+1005 OK-Python
+1006 Pending
+1008 OK
+1011 OK
+1012 OK
+1018 OK
+1019 OK
+1027 OK-Python
+1046 OK
+1049 OK
+1057 Fail-模拟乘法
+1078 OK
+1066 OK-judge{a%(b+1)==0}
+1069 OK-judge{all^ == 0}
+1073 OK 
+1079 OK
+1135 Fail-数论
+
